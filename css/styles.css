@@ -177,3 +177,16 @@
   h1, h2 {
     font-weight: 400;
   }
+  .alert-banner {
+    background-color: #ff3b3b; /* Bright red */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .alert-banner p {
+    margin: 0;
+  }
+  
