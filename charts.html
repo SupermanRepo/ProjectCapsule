@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charts - Daily Progress Tracker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .chart-sections {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .chart-section {
+      flex: 1;
+      min-width: 300px;
+      margin: 10px;
+    }
+    .chart-container {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="charts.html">Charts</a></li>
+      <li><a href="Information.html">About</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <h1>Data Charts</h1>
+    <div class="chart-sections">
+      <!-- Ritalin Section -->
+      <section class="chart-section">
+        <h2>Ritalin</h2>
+        <div class="chart-container">
+          <canvas id="chartRitalinBP"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinGrades"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinWeight"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinMood"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinSleep"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinFocus"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartRitalinEnergy"></canvas>
+        </div>
+      </section>
+      
+      <!-- Capsules Section -->
+      <section class="chart-section">
+        <h2>Capsules</h2>
+        <div class="chart-container">
+          <canvas id="chartCapsuleBP"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleGrades"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleWeight"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleMood"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleSleep"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleFocus"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartCapsuleEnergy"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Include Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Function to create a chart
+    function createChart(canvasId, chartTitle, label, data, borderColor) {
+      const ctx = document.getElementById(canvasId).getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Day 1'], // Placeholder labels
+          datasets: [{
+            label: label,
+            data: data,     // Placeholder data
+            borderColor: borderColor,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: chartTitle
+            }
+          }
+        }
+      });
+    }
+    
+    // Placeholder data for each chart
+    const placeholderData = [0];
+    
+    // Colors for Ritalin and Capsule charts
+    const ritalinColor = 'rgba(75, 192, 192, 1)';
+    const capsuleColor = 'rgba(153, 102, 255, 1)';
+    
+    // Array of metrics to be charted
+    const metrics = [
+      { id: 'BP', title: 'Blood Pressure' },
+      { id: 'Grades', title: 'Grades' },
+      { id: 'Weight', title: 'Weight' },
+      { id: 'Mood', title: 'Mood' },
+      { id: 'Sleep', title: 'Sleep' },
+      { id: 'Focus', title: 'Focus Duration' },
+      { id: 'Energy', title: 'Energy Levels' }
+    ];
+    
+    // Create charts for Ritalin
+    metrics.forEach(metric => {
+      createChart(
+        'chartRitalin' + metric.id,
+        metric.title + ' Over Time',
+        'Ritalin ' + metric.title,
+        placeholderData,
+        ritalinColor
+      );
+    });
+    
+    // Create charts for Capsules
+    metrics.forEach(metric => {
+      createChart(
+        'chartCapsule' + metric.id,
+        metric.title + ' Over Time',
+        'Capsule ' + metric.title,
+        placeholderData,
+        capsuleColor
+      );
+    });
+  </script>
+</body>
+</html>
