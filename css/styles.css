@@ -189,4 +189,14 @@
   .alert-banner p {
     margin: 0;
   }
-  
+  #current-day {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5733; /* Bright orange-red to stand out */
+    background-color: #222; /* Dark background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px 0;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
